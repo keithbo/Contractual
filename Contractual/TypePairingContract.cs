@@ -48,16 +48,21 @@
 			get { return _result; }
 		}
 
-		public ILinqAccess LinqAccess
+		private ILinqAccess Access
 		{
 			get
 			{
 				if (_linqAccess == null)
 				{
-					_linqAccess = null;//Linq.Factory.Create(_source.Type, _result.Type);
+					_linqAccess = (ILinqAccess)Activator.CreateInstance(typeof(LinqAccess<,>).MakeGenericType(_source.Type, _result.Type));
 				}
 				return _linqAccess;
 			}
+		}
+
+		public LambdaExpression CreatePairingConversion(ParameterExpression sourceParam, ParameterExpression converterParam)
+		{
+			return Helpers.Compose(Access.Select, Access.ToArray, sourceParam, converterParam);
 		}
 
 		protected TypePairingContract(TypeContract source, TypeContract result)
@@ -80,6 +85,32 @@
 		public TResult Invoke<TSource, TResult>(TSource source)
 		{
 			return ((Expression<Func<TSource, TResult>>)Convert()).Compile()(source);
+		}
+
+		private static class Linq<TSource, TResult>
+		{
+			public static readonly Expression<Func<IEnumerable<TSource>, Func<TSource, TResult>, IEnumerable<TResult>>> Select = (source, selector) => source.Select(selector);
+			public static readonly Expression<Func<IEnumerable<TResult>, TResult[]>> ToArray = (source) => source.ToArray();
+		}
+
+		private class LinqAccess<TSource, TResult> : ILinqAccess
+		{
+
+			public LambdaExpression Select
+			{
+				get { return Linq<TSource, TResult>.Select; }
+			}
+
+			public LambdaExpression ToArray
+			{
+				get { return Linq<TSource, TResult>.ToArray; }
+			}
+		}
+
+		internal interface ILinqAccess
+		{
+			LambdaExpression Select { get; }
+			LambdaExpression ToArray { get; }
 		}
 	}
 }

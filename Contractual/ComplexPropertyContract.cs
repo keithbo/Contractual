@@ -25,7 +25,7 @@ namespace Contractual
 			// [PropertyAccessorLambda].Compose([SourceToResultConverterLambda])
 			var sourceAccessor = Expression.Lambda(param, param);
 			var pairedTypeContract = TypePairingContract.GetContract(source.TypeContract.Type, TypeContract.Type);
-			var downstreamConverter = ExpressionExtensions.Compose(sourceAccessor, pairedTypeContract.Convert(), source.TypeContract.Parameter());
+			var downstreamConverter = Helpers.Compose(sourceAccessor, pairedTypeContract.Convert(), source.TypeContract.Parameter());
 			return Expression.Invoke(downstreamConverter, Expression.MakeMemberAccess(param, source.Property));
 		}
 

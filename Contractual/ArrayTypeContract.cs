@@ -50,13 +50,11 @@ namespace Contractual
 			//MethodCallExpression toArrayExp = Contractual.Linq.ToArray(resultType, selectExp);
 			//return toArrayExp;
 
-			var convertParam = Expression.Parameter(typeof(Func<,>).MakeGenericType(sourceType, resultType));
-			var select = innerPairing.LinqAccess.SelectSourceSelector;
-			var toarray = innerPairing.LinqAccess.ToArraySource;
-
-			var compose = select.Compose(toarray, sourceParam, convertParam);
-			var invoke = Expression.Invoke(compose, sourceParam, innerConvert);
+			var converterParam = Expression.Parameter(typeof(Func<,>).MakeGenericType(sourceType, resultType));
+			var conversion = innerPairing.CreatePairingConversion(sourceParam, converterParam);
+			var invoke = Expression.Invoke(conversion, sourceParam, innerConvert);
 			return invoke;
 		}
+
 	}
 }

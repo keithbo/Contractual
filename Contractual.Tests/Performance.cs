@@ -1,5 +1,4 @@
-﻿using NLog;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -29,9 +28,9 @@ namespace Contractual.Tests
 
 			var averageMs = watch.ElapsedMilliseconds / (decimal)n;
 			var averageTicks = watch.ElapsedTicks / (decimal)n;
-			Logger logger = LogManager.GetLogger("MyLog");
-			logger.Info("Activator (ms) => Total {0} Average: {1}", watch.ElapsedMilliseconds, averageMs);
-			logger.Info("Activator (ticks) => Total {0} Average: {1}", watch.ElapsedTicks, averageTicks);
+			//Logger logger = LogManager.GetLogger("MyLog");
+			//logger.Info("Activator (ms) => Total {0} Average: {1}", watch.ElapsedMilliseconds, averageMs);
+			//logger.Info("Activator (ticks) => Total {0} Average: {1}", watch.ElapsedTicks, averageTicks);
 		}
 
 		[Fact]
@@ -52,9 +51,9 @@ namespace Contractual.Tests
 
 			var averageMs = watch.ElapsedMilliseconds / (decimal)n;
 			var averageTicks = watch.ElapsedTicks / (decimal)n;
-			Logger logger = LogManager.GetLogger("MyLog");
-			logger.Info("Activator [static] (ms) => Total {0} Average: {1}", watch.ElapsedMilliseconds, averageMs);
-			logger.Info("Activator [static] (ticks) => Total {0} Average: {1}", watch.ElapsedTicks, averageTicks);
+			//Logger logger = LogManager.GetLogger("MyLog");
+			//logger.Info("Activator [static] (ms) => Total {0} Average: {1}", watch.ElapsedMilliseconds, averageMs);
+			//logger.Info("Activator [static] (ticks) => Total {0} Average: {1}", watch.ElapsedTicks, averageTicks);
 		}
 
 		[Fact]
@@ -73,9 +72,9 @@ namespace Contractual.Tests
 
 			var averageMs = watch.ElapsedMilliseconds / (decimal)n;
 			var averageTicks = watch.ElapsedTicks / (decimal)n;
-			Logger logger = LogManager.GetLogger("MyLog");
-			logger.Info("Instance (ms) => Total {0} Average: {1}", watch.ElapsedMilliseconds, averageMs);
-			logger.Info("Instance (ticks) => Total {0} Average: {1}", watch.ElapsedTicks, averageTicks);
+			//Logger logger = LogManager.GetLogger("MyLog");
+			//logger.Info("Instance (ms) => Total {0} Average: {1}", watch.ElapsedMilliseconds, averageMs);
+			//logger.Info("Instance (ticks) => Total {0} Average: {1}", watch.ElapsedTicks, averageTicks);
 		}
 
 		[Fact]
@@ -94,9 +93,9 @@ namespace Contractual.Tests
 
 			var averageMs = watch.ElapsedMilliseconds / (decimal)n;
 			var averageTicks = watch.ElapsedTicks / (decimal)n;
-			Logger logger = LogManager.GetLogger("MyLog");
-			logger.Info("MethodInvoke (ms) => Total {0} Average: {1}", watch.ElapsedMilliseconds, averageMs);
-			logger.Info("MethodInvoke (ticks) => Total {0} Average: {1}", watch.ElapsedTicks, averageTicks);
+			//Logger logger = LogManager.GetLogger("MyLog");
+			//logger.Info("MethodInvoke (ms) => Total {0} Average: {1}", watch.ElapsedMilliseconds, averageMs);
+			//logger.Info("MethodInvoke (ticks) => Total {0} Average: {1}", watch.ElapsedTicks, averageTicks);
 		}
 
 		[Fact]
@@ -118,9 +117,9 @@ namespace Contractual.Tests
 
 			var averageMs = watch.ElapsedMilliseconds / (decimal)n;
 			var averageTicks = watch.ElapsedTicks / (decimal)n;
-			Logger logger = LogManager.GetLogger("MyLog");
-			logger.Info("MethodInvoke [static] (ms) => Total {0} Average: {1}", watch.ElapsedMilliseconds, averageMs);
-			logger.Info("MethodInvoke [static] (ticks) => Total {0} Average: {1}", watch.ElapsedTicks, averageTicks);
+			//Logger logger = LogManager.GetLogger("MyLog");
+			//logger.Info("MethodInvoke [static] (ms) => Total {0} Average: {1}", watch.ElapsedMilliseconds, averageMs);
+			//logger.Info("MethodInvoke [static] (ticks) => Total {0} Average: {1}", watch.ElapsedTicks, averageTicks);
 		}
 
 		[Fact]
@@ -139,9 +138,9 @@ namespace Contractual.Tests
 
 			var averageMs = watch.ElapsedMilliseconds / (decimal)n;
 			var averageTicks = watch.ElapsedTicks / (decimal)n;
-			Logger logger = LogManager.GetLogger("MyLog");
-			logger.Info("Expression (ms) => Total {0} Average: {1}", watch.ElapsedMilliseconds, averageMs);
-			logger.Info("Expression (ticks) => Total {0} Average: {1}", watch.ElapsedTicks, averageTicks);
+			//Logger logger = LogManager.GetLogger("MyLog");
+			//logger.Info("Expression (ms) => Total {0} Average: {1}", watch.ElapsedMilliseconds, averageMs);
+			//logger.Info("Expression (ticks) => Total {0} Average: {1}", watch.ElapsedTicks, averageTicks);
 		}
 
 		[Fact]
@@ -162,9 +161,9 @@ namespace Contractual.Tests
 
 			var averageMs = watch.ElapsedMilliseconds / (decimal)n;
 			var averageTicks = watch.ElapsedTicks / (decimal)n;
-			Logger logger = LogManager.GetLogger("MyLog");
-			logger.Info("Expression [static dynamic] (ms) => Total {0} Average: {1}", watch.ElapsedMilliseconds, averageMs);
-			logger.Info("Expression [static dynamic] (ticks) => Total {0} Average: {1}", watch.ElapsedTicks, averageTicks);
+			//Logger logger = LogManager.GetLogger("MyLog");
+			//logger.Info("Expression [static dynamic] (ms) => Total {0} Average: {1}", watch.ElapsedMilliseconds, averageMs);
+			//logger.Info("Expression [static dynamic] (ticks) => Total {0} Average: {1}", watch.ElapsedTicks, averageTicks);
 		}
 
 		[Fact]
@@ -184,9 +183,9 @@ namespace Contractual.Tests
 
 			var averageMs = watch.ElapsedMilliseconds / (decimal)n;
 			var averageTicks = watch.ElapsedTicks / (decimal)n;
-			Logger logger = LogManager.GetLogger("MyLog");
-			logger.Info("Expression [static] (ms) => Total {0} Average: {1}", watch.ElapsedMilliseconds, averageMs);
-			logger.Info("Expression [static] (ticks) => Total {0} Average: {1}", watch.ElapsedTicks, averageTicks);
+			//Logger logger = LogManager.GetLogger("MyLog");
+			//logger.Info("Expression [static] (ms) => Total {0} Average: {1}", watch.ElapsedMilliseconds, averageMs);
+			//logger.Info("Expression [static] (ticks) => Total {0} Average: {1}", watch.ElapsedTicks, averageTicks);
 		}
 	}
 }

@@ -46,6 +46,7 @@
     <Compile Include="ComplexPropertyContract.cs" />
     <Compile Include="EnumTypeContract.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="Helpers.cs" />
     <Compile Include="PrimitiveTypeContract.cs" />
     <Compile Include="SimplePropertyContract.cs" />
     <Compile Include="WellKnownTypes.cs" />

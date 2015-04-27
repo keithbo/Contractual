@@ -1,5 +1,4 @@
 ﻿using Contractual.App;
-using NLog;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -141,11 +140,12 @@ namespace Contractual.Tests
 			var param2 = Expression.Parameter(typeof(Func<MyClass,MyClassDto>), "selector");
 
 			var contract = TypePairingContract.GetContract(typeof(MyClass), typeof(MyClassDto));
-			var select = contract.LinqAccess.SelectSourceSelector;
-			var toarray = contract.LinqAccess.ToArraySource;
+			var conversion = contract.CreatePairingConversion(param1, param2);
+			//var select = contract.LinqAccess.SelectSourceSelector;
+			//var toarray = contract.LinqAccess.ToArraySource;
 
-			var compose = select.Compose(toarray, param1, param2);
-			var invoke = Expression.Invoke(compose, param1, contract.Convert());
+			//var compose = select.Compose(toarray, param1, param2);
+			var invoke = Expression.Invoke(conversion, param1, contract.Convert());
 			var lambda = Expression.Lambda(invoke, param1);
 
 			var result = lambda.Compile().DynamicInvoke(new object[] { new MyClass[] { source } });
