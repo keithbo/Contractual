@@ -82,7 +82,19 @@ namespace Contractual.Tests
 			var compiled = convert.Compile();
 			var result = compiled.DynamicInvoke(new object[] { source });
 
-			System.Console.WriteLine();
+			Assert.IsType<MyClassWithArrayDto>(result);
+			var dto = (MyClassWithArrayDto)result;
+			Assert.Equal(source.Name, dto.Name);
+			Assert.Equal(source.Other, dto.Other);
+			Assert.NotNull(dto.Sub);
+			Assert.Equal(source.Sub.Value1, dto.Sub.Value1);
+			Assert.Equal(source.Sub.Value2, dto.Sub.Value2);
+			Assert.Equal(source.Sub.Value3, dto.Sub.Value3);
+			Assert.NotNull(dto.SubArray);
+			Assert.Equal(1, dto.SubArray.Length);
+			Assert.Equal(source.SubArray[0].Value1, dto.SubArray[0].Value1);
+			Assert.Equal(source.SubArray[0].Value2, dto.SubArray[0].Value2);
+			Assert.Equal(source.SubArray[0].Value3, dto.SubArray[0].Value3);
 		}
 
 		[Fact]
@@ -95,7 +107,7 @@ namespace Contractual.Tests
 			var compiled = convert.Compile();
 			var result = compiled.DynamicInvoke(new object[] { myStrings });
 
-			System.Console.WriteLine();
+			Assert.Equal(myStrings, result);
 		}
 
 		[Fact]
@@ -110,7 +122,12 @@ namespace Contractual.Tests
 			MethodInfo enumeratorMethod;
 			CollectionTypeContract.TryFindInterfaceTypeInfo(type, out interfaceType, out interfaceKind, out itemType, out addMethod, out enumeratorMethod);
 
-			System.Console.WriteLine();
+			Assert.Equal(typeof(IList<>), interfaceType);
+			Assert.Equal(CollectionKind.GenericList, interfaceKind);
+			Assert.Equal(typeof(string), itemType);
+			//Assert.Equal(type.GetMethod("Add"), addMethod);
+			//Assert.Equal(type.GetMethod("GetEnumerator"), enumeratorMethod);
+
 		}
 
 		[Fact]
